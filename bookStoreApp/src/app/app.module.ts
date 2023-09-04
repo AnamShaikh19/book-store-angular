@@ -1,29 +1,39 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { HowItsWorkComponent } from './how-its-work/how-its-work.component';
+import { AboutUsComponent } from './public-component/about-us/about-us.component';
+import { HowItsWorkComponent } from './public-component/how-its-work/how-its-work.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
-import { PublicModule } from './public/public.module';
+import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './public-component/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
  
 @NgModule({
-  declarations: [
-    AppComponent,
-    AboutUsComponent,
-    HowItsWorkComponent
-  ],
+
+  declarations: [ AppComponent,  AboutUsComponent, HowItsWorkComponent, HomeComponent,],
   imports: [
+
+    MatCardModule,
     BrowserModule,
+    BrowserAnimationsModule,
+
+  //  AuthModule,
+   // UserModule,
+   // PublicModule,
+    RouterModule,
+    FormsModule,
+    SharedModule,
     AppRoutingModule,
-    AuthModule,
-    UserModule,
-    PublicModule,
+    //MatToolbarModule,
+   // MatIconModule,
+   // MatButtonModule,
     
 
   ],

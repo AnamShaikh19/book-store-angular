@@ -1,14 +1,5 @@
-<div>
-  <a routerLink="/about-us">About us </a>
-  <a routerLink="/how-its-work">How its work </a>
-  <a routerLink="/auth/login" [queryParams]="{name:'anamShaikh',email: email}">Login </a>
-  <a routerLink="/auth/singin">Singin </a>
-  <a routerLink="/public/all-books">All-Books </a>
-  <a [routerLink]="['/public/book-details', '3', 'author','100']">More Details</a>
 
+<app-toolbar></app-toolbar>
 
-
-
-
-</div>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

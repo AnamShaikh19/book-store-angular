@@ -1,0 +1,81 @@
+<p>add-book works!</p>
+<table>
+  <tr>
+    <td>pristine</td>
+    <td>{{booktitle.pristine}}</td>
+  </tr>
+  <tr>
+    <td>dirty</td>
+    <td>{{booktitle.dirty}}</td>
+  </tr>
+  <tr>
+    <td>touched</td>
+    <td>{{booktitle.touched}}</td>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td>{{booktitle.status}}</td>
+  </tr>
+  <tr>
+    <td>errors</td>
+    <td>{{booktitle.errors | json}}</td>
+  </tr>
+</table>
+{{'valid ='+myForms.valid}}
+{{'Invalid ='+myForms.invalid}}
+
+<form #myForms="ngForm" (ngSubmit)="saveBook(myForms.value)" class="add-book-form">
+
+<mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput name="Title" placeholder="Title" ngModel required minlength="5" maxlength="30" #booktitle="ngModel">
+    <mat-icon matSuffix>Title</mat-icon>
+    <mat-hint *ngIf="booktitle.invalid && booktitle.touched">
+      <samp required>enter book title and </samp> <tr></tr>
+      <samp>min length is 5</samp>
+
+    </mat-hint>
+  </mat-form-field><br><br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Author Name</mat-label>
+    <input matInput name="Author" placeholder="Author" ngModel required maxlength="10" #author="ngModel">
+    <mat-icon matSuffix>person</mat-icon>
+    <mat-hint *ngIf="author.invalid && author.touched">Plase enter author name</mat-hint>
+
+  </mat-form-field><br><br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Total Pages</mat-label>
+    <input matInput type="number" name="Totalpages" placeholder="Totalpages" ngModel min="10" max="1000" #rop="ngModel">
+    <mat-icon matSuffix>123</mat-icon>
+    <mat-hint [hidden]="rop.valid">Valid length is 10 to 100</mat-hint>
+
+  </mat-form-field><br><br>
+
+  <mat-form-field appearance="outline">
+    
+    <mat-label>Price</mat-label>
+    <mat-select type="number" name="Price" placeholder="Price" ngModel>
+        <mat-option value="100">$ 100</mat-option>
+    <mat-option value="200">$ 200</mat-option>
+    <mat-option value="300">$ 300</mat-option>
+      </mat-select>
+    <mat-icon matSuffix>attach_money</mat-icon>
+  </mat-form-field><br><br>
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" name="PublishOn" ngModel>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+ 
+  <mat-slide-toggle class="toggle" name="isPublised" ngModel>Is Published book?!</mat-slide-toggle>
+
+
+
+    <button type="submit" [disabled]="myForms.invalid" mat-raised-button color="primary">save</button>
+
+</form>
